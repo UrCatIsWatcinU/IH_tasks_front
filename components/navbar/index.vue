@@ -39,8 +39,8 @@ export default {
                 {
                     tabName: 'Create',
                     title: 'Создать',
-                    btnHtml: '<line x1="40" y1="0" x2="40" y2="80" ></line><line x1="0" y1="40" x2="80" y2="40"></line>',
-                    viewBox: '0 0 80 80'
+                    btnHtml: '<path d="M34 4V64M4 34H64" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>',
+                    viewBox: '0 0 68 68'
                 },
                 {
                     tabName: 'Statistics',
@@ -77,6 +77,10 @@ export default {
 .navbar{
     padding: 0 var(--pad);
     background-color: #F4F6F7;
+    background-image: url(static/navmask.svg);
+    background-position: center top;
+    background-size: 70px;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -94,9 +98,9 @@ export default {
 }
 .nav-create{
     height: 60px;
-    width: 62px;
+    width: 60px;
     background-color: var(--basic-c);
-    border-radius: 38px;
+    border-radius: 40%;
     padding: 15px;
     box-sizing: border-box;
     position: relative;
@@ -105,14 +109,15 @@ export default {
     justify-content: center;
     align-items: center;
     /* filter: drop-shadow(var(--dr)); */
-    border: 5px var(--bgc) solid;
-    box-shadow: 0px 25px 40px 0px rgba(250, 188, 88, 0.25);
+    /* border: 5px var(--bgc) solid; */
+    box-shadow: 0px 25px 40px 0px rgba(250, 188, 88, 0.3);
 }
 .nav-create.nav-active{
     background-color: var(--red-c);
+    box-shadow: 0px 25px 40px 0px rgba(250, 90, 90, 0.3);;
 }
 .nav-create > svg{
-    stroke-width: 6px;
+    stroke-width: 7px;
     stroke: var(--bgc) !important;
     transition: var(--trans);
 }
@@ -126,6 +131,7 @@ export default {
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
+    transition: var(--trans);
 }
 .nav-calendar{
     display: flex;
@@ -137,7 +143,9 @@ export default {
     font-size: 11px;
     font-weight: bold;
     position: absolute;
-    bottom: 4px;
-    color: var(--grey-c)
+    bottom: 2px;
+    color: var(--grey-c);
+    transition: var(--trans);
+    user-select: none;
 }
 </style>

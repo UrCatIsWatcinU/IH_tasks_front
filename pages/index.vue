@@ -72,7 +72,7 @@ export default {
           id: 1,
           title: 'test',
           tags: ['HW'],
-          deadline: 1624048802 + 60 * 60 * 40
+          deadline: 1624048802 + 60 * 60 * 60
         },
         {
           id: 2,
@@ -85,8 +85,27 @@ export default {
           id: 3,
           title: 'test3',
           tags: ['HW'],
-          deadline: 1624048802
+          deadline: 1624048802 + 60 * 60 * 60
         },
+        {
+          id: 4,
+          title: 'test',
+          tags: ['HW'],
+          deadline: 1624048802 + 60 * 60 * 60
+        },
+        {
+          id: 5,
+          title: 'test2',
+          tags: ['HW'],
+          deadline: 1624048802 + 60 * 60 * 60
+        },
+        // пример json'а для task
+        {
+          id: 6,
+          title: 'test3',
+          tags: ['HW'],
+          deadline: 1624048802 + 60 * 60 * 60
+        }
       ],
     }
   },

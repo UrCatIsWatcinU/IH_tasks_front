@@ -105,12 +105,13 @@ export default {
     position: fixed;
     display: flex;
     background-color: var(--basic-c);
+    box-shadow: var(--block-shadow);
     padding: 5px;
     border-radius: 7px;
     bottom: 100px;
 }
 .switcher-item{
-    padding: 7.5px 25px;
+    padding: 3px 25px;
     color: var(--bgc);
     border-radius: 5px;
     cursor: pointer;
@@ -123,5 +124,9 @@ export default {
 
 .calendar-history{
     display: none;
+}
+
+.calendar-day-title {
+    color: var(--basic-c);
 }
 </style>
