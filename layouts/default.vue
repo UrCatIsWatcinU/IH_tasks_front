@@ -24,7 +24,6 @@
     color: var(--font-c);
   }
   html {
-
     font-family:
       'Source Sans Pro',
       -apple-system,
@@ -77,19 +76,5 @@
   .button--grey:hover {
     color: #fff;
     background-color: #35495e;
-}
-
-  input {
-    display: flex;
-    width: 100%;
-    height: 40px;
-    border-radius: 5px;
-    padding: 10px;
-    color: var(--primary-font-c);
-    border: 2px solid var(--primary-font-c);
-  }
-
-  label {
-    color: var(--primary-font-c);
   }
 </style>

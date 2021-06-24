@@ -8,8 +8,6 @@
     </div>
 </template>
 <script>
-import Vue from 'vue'
-
 import Tasks from './tasks.vue'
 import Activities from './activities.vue'
 export default {
@@ -61,12 +59,12 @@ export default {
                     currentPiece = {
                         date: date,
                         pieces: [e],
-                        isHistory: date - this.$now() < 0 || methodsToCheckIfHistory.filter(m => e[m]()).length
                     };
-
+                    currentPiece.isHistory = currentPiece.pieces.filter(p => p.isHistory()).length == currentPiece.pieces.length;
                     splittedArr.push(currentPiece);
                 }else{
                     currentPiece.pieces.push(e);
+                    currentPiece.isHistory = currentPiece.pieces.filter(p => p.isHistory()).length == currentPiece.pieces.length;
                 }
             }
 

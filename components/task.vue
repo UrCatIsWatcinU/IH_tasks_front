@@ -1,5 +1,5 @@
 <template>
-    <div @click="() => $dataStore.info = info" class="block task">
+    <div v-if="!task.isHistory()" @click="() => $dataStore.info = info" class="block task">
         <div class="block-content">
             <h4 class="task-title">{{ task.title }}</h4>
             <div class="tags">
