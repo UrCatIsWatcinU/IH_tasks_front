@@ -1,5 +1,5 @@
 <template>
-    <div @click="() => $emit('infoOpen', info)" class="block activity">
+    <div @click="() => $dataStore.info = info" class="block activity">
         <div class="block-content">
             <h4 class="activity-title">{{ activity.title }}</h4>
             <div class="tags">
@@ -51,7 +51,9 @@ export default {
     },
     methods: {
         delete(){
+            this.$dataStore.activities = this.$dataStore.activities.filter(t => t != this.activity);
 
+            this.$emit('deleted', this.activity.id);
         }
     }
 }

@@ -6,7 +6,7 @@
             :key="$parseDate(day.date, 'longLeft')">
             <h2 class="calendar-day-title">{{ $parseDate(day.date, 'longLeft') }}</h2>    
             <Activity 
-                @infoOpen="(info) => $parent.$emit('infoOpen', info)" 
+                @deleted='deleteActivity'
                 v-for="activity in day.pieces" 
                 :key="activity.id" 
                 :activity="activity" 
@@ -19,7 +19,18 @@
 export default {
     data(){
         return {
-            activities: this.$parent.splitByDays(this.$parent.activities, 'starttime')
+            activities: this.$parent.splitByDays(this.$dataStore.activities, 'starttime')
+        }
+    },
+    methods: {
+        deleteActivity(id){
+            this.activities = this.activities.map(day => {
+                day.pieces = day.pieces.filter(a => a.id != id);
+                
+                return day;
+            });
+
+            this.activities = this.activities.filter(d => d.pieces.length)
         }
     }
 }

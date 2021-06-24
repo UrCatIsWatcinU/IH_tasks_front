@@ -4,7 +4,7 @@
     <div class="horizontal-scroll">
       <Task 
         @infoOpen="(info) => $emit('infoOpen', info)"
-        v-for="task in filterOnlyNew(60 * 60 * 24 * 3, 'deadline', tasks)" 
+        v-for="task in filterOnlyNew(60 * 60 * 24 * 3, 'deadline', tasks, ['isCompleted'])" 
         :key="task.id" 
         :task="task"
       />
@@ -35,16 +35,20 @@ export default {
     }
   },
   methods: {
-    filterOnlyNew(offset, dateProp, array){
+    filterOnlyNew(offset, dateProp, array, addonMethods = []){
       return array
-      .filter((e) => (this.$parseDate(e[dateProp]) - this.$now()) >= 0 && (this.$parseDate(e[dateProp]) - this.$now()) < this.$parseDate(offset))
+      .filter(e => 
+        (this.$parseDate(e[dateProp]) - this.$now()) >= 0 && 
+        (this.$parseDate(e[dateProp]) - this.$now()) < this.$parseDate(offset) && 
+        !addonMethods.filter(m => e[m]()).length
+      )
       .sort((a, b) => a[dateProp] - b[dateProp])
     },
   }
 }
 </script>
 
-<style>
+<style scoped>
 .horizontal-scroll{
   overflow-x: auto;
   display: flex;
@@ -63,10 +67,10 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.main .block:first-child{
+.block:first-child{
   margin-left: 0;
 }
-.main .block:last-child{
+.block:last-child{
   margin-right: 0;
 }
 </style>

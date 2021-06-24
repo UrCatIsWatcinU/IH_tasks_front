@@ -1,5 +1,5 @@
 <template>
-    <div @click="function(){$parent.info = null;}" class="info" v-if="info">
+    <div @click="() => $dataStore.info = null" class="info" v-if="info">
         <div @click.stop="() => null" class="info-content">
             <h3 class="info-title">{{ info.title }}</h3>
             <div class="tags">
@@ -13,11 +13,12 @@
                     </div>
                 </div>
                 <div class="info-btns">
-                    <button 
+                    <button
+                        @click="() => $dataStore.info = null" 
                         v-for="btn in info.btns" 
                         :key="btn.name" @click.stop="btn.fn" 
                         :class="`info-btn info-btn-${btn.name} ${btn.type ? ' btn-' + btn.type : ''}`"
-                    >{{btn.text}}</button>
+                    >{{ btn.text }}</button>
                 </div>
             </div>
         </div>
@@ -34,7 +35,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .info{
     --mg-b: 7.5px;
     display: flex;
@@ -97,7 +98,7 @@ button {
     width: 100% !important;
 }
 
-.info .tags{
+.tags{
     margin-bottom: var(--mg-b);
 }
 </style>

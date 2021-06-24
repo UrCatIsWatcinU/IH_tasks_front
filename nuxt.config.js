@@ -28,7 +28,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/lib.js'
+    '~/plugins/lib.js',
+    '~/plugins/data.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

@@ -8,6 +8,8 @@
     </div>
 </template>
 <script>
+import Vue from 'vue'
+
 import Tasks from './tasks.vue'
 import Activities from './activities.vue'
 export default {
@@ -44,7 +46,7 @@ export default {
 
             document.querySelectorAll('.switcher-item').forEach(si => si.classList.toggle('switcher-active'))
         },
-        splitByDays(arr, dateProp){
+        splitByDays(arr, dateProp, methodsToCheckIfHistory = []){
             arr = arr.sort((a, b) => a[dateProp] - b[dateProp]);
 
             const splittedArr = [];
@@ -59,10 +61,10 @@ export default {
                     currentPiece = {
                         date: date,
                         pieces: [e],
-                        isHistory: date - this.$now() < 0
-                    }
+                        isHistory: date - this.$now() < 0 || methodsToCheckIfHistory.filter(m => e[m]()).length
+                    };
 
-                    splittedArr.push(currentPiece)
+                    splittedArr.push(currentPiece);
                 }else{
                     currentPiece.pieces.push(e);
                 }
@@ -85,6 +87,8 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    padding-bottom: 200px;
 }
 .calendar-content{
     width: 100%;

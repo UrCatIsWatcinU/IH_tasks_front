@@ -1,9 +1,9 @@
 <template>
   <div class="app">
     <h1>{{title}}</h1>
-    <component @infoOpen="(info) => {this.info = info;}" :is="activeTab" :tasks="tasks" :activities="activities"></component>
+    <component @infoOpen="(info) => {this.info = info;}" :is="activeTab" :tasks="$dataStore.tasks" :activities="$dataStore.activities"></component>
     <Navbar @changeTab="changeTab" /> 
-    <Info :info="info"/>
+    <Info :info="$dataStore.info"/>
   </div>
 </template>
 
@@ -17,13 +17,14 @@ import Create from '../components/tabs/create.vue'
 import Statistics from '../components/tabs/statistics.vue'
 import Sets from '../components/tabs/sets.vue'
 import Navbar from '../components/navbar'
+
 export default {
-  head (){
+  head(){
     return {
       title: 'Tasks | ' + this.activeTab
     }
   },
-  components:{
+  components: {
     Info: Info, 
     Activity: Activity,
     Task: Task,
@@ -34,79 +35,11 @@ export default {
     Statistics: Statistics,
     Sets: Sets, 
   },
-  data() {
-    return{
+  data(){
+    return {
       activeTab: 'Main',
       title: 'Главная',
       urlParams: null,
-      info: null,
-      activities: [
-        {
-          id: 1,
-          title: 'test',
-          tags: ['lesson'],
-          starttime: 1624048802 + 60 * 60 * 40,
-          endtime: 1725042000,
-          addonInfo: [
-            {name: 'Аудитория', text: 'Ц1 301'}
-          ]
-        },
-        {
-          id: 2,
-          title: 'test2',
-          tags: ['lesson'],
-          starttime: 1624048802 + 60 * 60 * 41,
-          endtime: 1624048802 + 60 * 60 * 45
-        },
-        // пример json'а для activity
-        {
-          id: 3,
-          title: 'test3',
-          tags: ['lesson'],
-          starttime: 1624000000+ 60 * 60 * 2000,
-          endtime: 1624049000
-        },
-      ],
-      tasks: [
-        {
-          id: 1,
-          title: 'test',
-          tags: ['HW'],
-          deadline: 1624048802 + 60 * 60 * 60
-        },
-        {
-          id: 2,
-          title: 'test2',
-          tags: ['HW'],
-          deadline: 1624048802 + 60 * 60 * 60
-        },
-        // пример json'а для task
-        {
-          id: 3,
-          title: 'test3',
-          tags: ['HW'],
-          deadline: 1624048802 + 60 * 60 * 60
-        },
-        {
-          id: 4,
-          title: 'test',
-          tags: ['HW'],
-          deadline: 1624048802 + 60 * 60 * 60
-        },
-        {
-          id: 5,
-          title: 'test2',
-          tags: ['HW'],
-          deadline: 1624048802 + 60 * 60 * 60
-        },
-        // пример json'а для task
-        {
-          id: 6,
-          title: 'test3',
-          tags: ['HW'],
-          deadline: 1624048802 + 60 * 60 * 60
-        }
-      ],
     }
   },
   methods: {
